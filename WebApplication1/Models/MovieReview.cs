@@ -16,5 +16,15 @@ namespace WebApplication1.Models
         public string ReviewText { get; set; }
 
 
+        public virtual int MovieId { get; set; }
+        [ForeignKey("Movie")]
+
+        public virtual int PersonId { get; set; }
+        [ForeignKey("Person")]
+
+        public virtual Movie Movie { get; set; }
+        public virtual Person Person { get; set; }
+
+
     }
 }
