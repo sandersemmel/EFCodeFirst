@@ -33,13 +33,24 @@ namespace WebApplication1
         {
             try
             {
-                dbContext.Movies.Add(item);
+                dbContext.Movies.Remove(item);
+                dbContext.SaveChanges();
             }
             catch (Exception e)
             {
 
-                throw;
+                Console.WriteLine(e.Message);
             }
+        }
+        public List<Movie> GetAll()
+        {
+               return dbContext.Movies.ToList();
+        }
+
+
+        public Movie FindSingle(int? id)
+        {
+            return dbContext.Movies.Find(id);
         }
     }
 }

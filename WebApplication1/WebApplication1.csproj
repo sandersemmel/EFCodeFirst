@@ -55,6 +55,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -94,22 +96,49 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\DatabaseInitializer.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\MovieReviewController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IRepository.cs" />
     <Compile Include="Migrations\201805141300114_initial.cs" />
     <Compile Include="Migrations\201805141300114_initial.Designer.cs">
       <DependentUpon>201805141300114_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MovieContext.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieReview.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="Repository\MovieRepository.cs" />
+    <Compile Include="MOVIEREVIEW.cs" />
+    <Compile Include="PERSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

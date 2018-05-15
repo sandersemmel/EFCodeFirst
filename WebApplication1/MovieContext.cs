@@ -5,9 +5,9 @@ namespace WebApplication1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class MovieContext : DbContext
     {
-        public Model1()
+        public MovieContext()
             : base("name=Model1")
         {
         }

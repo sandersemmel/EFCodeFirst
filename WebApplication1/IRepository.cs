@@ -10,7 +10,9 @@ namespace WebApplication1
     {
         void Add(T item);
         void Remove(T item);
+        List<T> GetAll();
         List<T> Find();
+        T FindSingle(int? id);
 
 
     }
