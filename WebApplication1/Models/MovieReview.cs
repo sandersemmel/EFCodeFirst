@@ -15,7 +15,6 @@ namespace WebApplication1.Models
 
         public string ReviewText { get; set; }
 
-
         public virtual int MovieId { get; set; }
         [ForeignKey("Movie")]
 

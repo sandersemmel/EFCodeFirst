@@ -13,6 +13,6 @@ namespace WebApplication1.Models
         public int MovieId { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
-        public virtual List<MovieReview> MovieReviews { get; set; }
+        public virtual ICollection<MovieReview> MovieReviews { get; set; }
     }
 }

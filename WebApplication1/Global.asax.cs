@@ -14,7 +14,7 @@ namespace WebApplication1
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
+           // System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
 
         }
     }
