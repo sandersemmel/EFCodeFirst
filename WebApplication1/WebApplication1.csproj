@@ -130,6 +130,10 @@
     <Compile Include="Migrations\201805170747590_newrow.Designer.cs">
       <DependentUpon>201805170747590_newrow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805170858197_movieratingNullableType.cs" />
+    <Compile Include="Migrations\201805170858197_movieratingNullableType.Designer.cs">
+      <DependentUpon>201805170858197_movieratingNullableType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieContext.cs" />
     <Compile Include="Movie.cs" />
@@ -180,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805170747590_newrow.resx">
       <DependentUpon>201805170747590_newrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170858197_movieratingNullableType.resx">
+      <DependentUpon>201805170858197_movieratingNullableType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
