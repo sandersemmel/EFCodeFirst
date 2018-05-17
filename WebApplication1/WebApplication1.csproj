@@ -99,6 +99,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\MovieReviewController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Data Transfer Object\MovieDetails.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -121,6 +122,7 @@
     <Compile Include="Models\MovieReview.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Repository\MovieDetailsRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="MOVIEREVIEW.cs" />
     <Compile Include="PERSON.cs" />
@@ -149,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Mapper\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805141300114_initial.resx">

@@ -22,6 +22,7 @@ namespace WebApplication1
                         .SerializerSettings
                         .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
+
         }
     }
 }
