@@ -14,8 +14,7 @@ namespace WebApplication1
         [StringLength(255)]
         public string MovieReviewText { get; set; }
 
-        [StringLength(255)]
-        public string MovieRating { get; set; }
+        public int MovieRating { get; set; }
 
         public int? MovieID { get; set; }
 

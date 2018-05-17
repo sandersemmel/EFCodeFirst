@@ -31,8 +31,9 @@ namespace WebApplication1
                 .IsUnicode(false);
 
             modelBuilder.Entity<MOVIEREVIEW>()
-                .Property(e => e.MovieRating)
-                .IsUnicode(false);
+                .Property(e => e.MovieRating);
+
+
 
             modelBuilder.Entity<PERSON>()
                 .Property(e => e.FirstName)

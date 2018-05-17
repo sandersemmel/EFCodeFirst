@@ -23,17 +23,39 @@ namespace WebApplication1.Repository
         {
             using (MovieContext dbContext = new MovieContext())
             {
-                var newMovieDetails = dbContext.Movies.FirstOrDefault(x => x.MovieID == id);
-                if (newMovieDetails == null)
+                var movie = dbContext.Movies.FirstOrDefault(x => x.MovieID == id);
+                var rating = dbContext.MOVIEREVIEWs.Where(x => x.MovieID == id);
+                var amountOfRatings = rating.Count();
+                var movieRatingSum = rating.Sum(z=>z.MovieRating);
+                double? movieDetailsRating;
+
+                if (amountOfRatings == null || amountOfRatings == 0)
+                {
+                    movieDetailsRating = null;
+                }
+                else
+                {
+                    movieDetailsRating = (double)movieRatingSum / (double)amountOfRatings; 
+                }
+
+                if (movie == null)
                 {
                     return null;
                 }
-                var MappedDetails = new MovieDetails
+                else
                 {
-                    MovieID = newMovieDetails.MovieID,
-                    MovieName = newMovieDetails.MovieName
-                };
-                return MappedDetails;
+                    var MappedDetails = new MovieDetails
+                    {
+                        MovieID = movie.MovieID,
+                        MovieName = movie.MovieName,
+                        Rating = movieDetailsRating
+                        
+       
+                    };
+                    return MappedDetails;
+                }
+
+
             }
         }
 

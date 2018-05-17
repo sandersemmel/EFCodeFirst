@@ -4,8 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApplication1.Context;
-using WebApplication1.Models;
 using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
