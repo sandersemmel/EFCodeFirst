@@ -44,6 +44,7 @@ namespace WebApplication1.Repository
             using (MovieContext dbContext = new MovieContext())
             {
                 var movieReviews = dbContext.MOVIEREVIEWs.Where(x => x.MovieID == movieID).ToList();
+                var person = dbContext.People.ToList();
 
                 var movieReviewDTO = movieReviews.Select(item => new MovieReviewDetails()
                 {
@@ -51,7 +52,9 @@ namespace WebApplication1.Repository
                     MovieID = item.MovieID,
                     MovieRating = item.MovieRating,
                     MovieReviewText = item.MovieReviewText,
-                    Reviewer = item.Reviewer
+                    Reviewer = item.Reviewer,
+                    ReviewerFirstName = person.Where(y=>y.PersonID == item.Reviewer).FirstOrDefault().FirstName,
+                    ReviewerLastName = person.Where(y=>y.PersonID == item.Reviewer).FirstOrDefault().LastName
                 }).ToList();
                 return movieReviewDTO;
 

@@ -12,6 +12,8 @@ namespace WebApplication1.Data_Transfer_Object
         public int? MovieID { get; set; }
         public int? Reviewer { get; set; }
         public int? MovieRating { get; set; }
+        public string ReviewerFirstName { get; set; }
+        public string ReviewerLastName { get; set; }
 
     }
 }

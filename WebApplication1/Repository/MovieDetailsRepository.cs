@@ -48,7 +48,9 @@ namespace WebApplication1.Repository
                     {
                         MovieID = movie.MovieID,
                         MovieName = movie.MovieName,
-                        Rating = movieDetailsRating
+                        Rating = movieDetailsRating,
+                        BroughtBy =movie.BroughtBy,
+                        Director= movie.Director
                         
        
                     };
