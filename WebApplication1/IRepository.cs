@@ -8,8 +8,8 @@ namespace WebApplication1
 {
     public interface IRepository<T>
     {
-        void Add(T item);
-        void Remove(T item);
+        bool Add(T item);
+        bool Remove(T item);
         List<T> GetAll();
         List<T> Find();
         T FindSingle(int? id);

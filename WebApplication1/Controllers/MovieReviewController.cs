@@ -46,5 +46,19 @@ namespace WebApplication1.Controllers
             }
 
         }
+        [HttpPost]
+        [Route("api/moviereviewdetails/add")]
+        public IHttpActionResult Add([FromBody] MovieReviewDetails movieReviewDetails)
+        {
+            if (movieReviewDetailsRepository.Add(movieReviewDetails))
+            {
+                return Ok();
+            }
+            else
+            {
+                return Content(HttpStatusCode.BadRequest, "Moviereview was not added!");
+            }
+            
+        }
     }
 }

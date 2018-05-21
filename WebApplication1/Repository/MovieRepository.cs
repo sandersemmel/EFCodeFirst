@@ -16,31 +16,37 @@ namespace WebApplication1
             throw new NotImplementedException();
         }
 
-        public void Add(Movie item)
+        public bool Add(Movie movie)
         {
-            try
+            using (MovieContext dbContext = new MovieContext())
             {
-                dbContext.Movies.Add(item);
-                dbContext.SaveChanges();
+                if (movie.MovieName == "" || movie.MovieName == null ||
+                    movie.BroughtBy == null || movie.BroughtBy == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    dbContext.Movies.Add(movie);
+                    dbContext.SaveChanges();
+                    return true;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
         }
 
-        public void Remove(Movie item)
+        public bool Remove(Movie item)
         {
             try
             {
                 dbContext.Movies.Remove(item);
                 dbContext.SaveChanges();
+                return true;
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
+                return false;
             }
         }
         public List<Movie> GetAll()

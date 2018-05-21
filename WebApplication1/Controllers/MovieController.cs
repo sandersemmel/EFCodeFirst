@@ -34,20 +34,13 @@ namespace WebApplication1.Controllers
         [Route("api/movies/add")]
         public IHttpActionResult AddMovie([FromBody] Movie movie)
         {
-            if ((movie.MovieName == "" || movie.MovieName == null) ||
-                movie.BroughtBy == 0 || movie.BroughtBy == null)
+            if (MovieRepository.Add(movie))
             {
-                return NotFound();
+                return Ok();
             }
             else
             {
-                MovieRepository.FindSingle(movie.BroughtBy);
-            
-                Movie newMovie = new Movie();
-                newMovie.MovieName = movie.MovieName;
-
-                MovieRepository.Add(newMovie);
-                return Ok();
+                return NotFound();
             }
         }
         [HttpGet]

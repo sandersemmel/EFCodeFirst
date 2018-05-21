@@ -9,12 +9,38 @@ namespace WebApplication1.Repository
 {
     public class MovieReviewDetailsRepository : IRepository<MovieReviewDetails>
     {
-        public void Add(MovieReviewDetails item)
+        public bool Add(MovieReviewDetails item)
         {
-            throw new NotImplementedException();
+            using (MovieContext dbContext = new MovieContext())
+            {
+                if (item.MovieReviewText == "" ||
+                    (item.Reviewer == null || item.Reviewer == 0) ||
+                    item.MovieRating == null || 
+                    item.MovieID == null || item.MovieID == 0
+                    )
+                    return false;
+                else
+                {
+                    MOVIEREVIEW movieReview = new MOVIEREVIEW();
+
+                    movieReview.MovieReviewText = item.MovieReviewText;
+                    movieReview.MovieRating = item.MovieRating;
+                    movieReview.Reviewer = item.Reviewer;
+                    movieReview.MovieID = item.MovieID;
+
+                    dbContext.MOVIEREVIEWs.Add(movieReview);
+                    dbContext.SaveChanges();
+
+                    return true;
+
+                }
+            }
+                
+
+            
         }
 
-        public void Remove(MovieReviewDetails item)
+        public bool Remove(MovieReviewDetails item)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +70,7 @@ namespace WebApplication1.Repository
             using (MovieContext dbContext = new MovieContext())
             {
                 var movieReviews = dbContext.MOVIEREVIEWs.Where(x => x.MovieID == movieID).ToList();
-                var person = dbContext.People.ToList();
+                var person = dbContext.People.ToList(); // älä tee näin, ellei ole pakko
 
                 var movieReviewDTO = movieReviews.Select(item => new MovieReviewDetails()
                 {

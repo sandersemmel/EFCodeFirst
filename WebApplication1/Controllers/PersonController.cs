@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApplication1.Data_Transfer_Object;
 using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
@@ -11,7 +12,8 @@ namespace WebApplication1.Controllers
 
     public class PersonController : ApiController
     {
-        PersonRepository PersonRepository = new PersonRepository();
+        PersonDTORepository personDTORepository = new PersonDTORepository();
+        PersonRepository personRepository = new PersonRepository();
 
         [Route("api/addperson")]
         [HttpPost]
@@ -20,7 +22,7 @@ namespace WebApplication1.Controllers
             PERSON uusi = new PERSON();
             uusi.FirstName = "testi";
             uusi.LastName = "testi";
-            PersonRepository.Add(uusi);
+            personRepository.Add(uusi);
             return Ok();
         }
         [HttpGet]
@@ -33,7 +35,7 @@ namespace WebApplication1.Controllers
             }
             else
             {
-                PERSON person = PersonRepository.FindSingle(id);
+                PERSON person = personRepository.FindSingle(id);
                 return Ok(person);
             }
 
@@ -42,7 +44,7 @@ namespace WebApplication1.Controllers
         [Route("api/person/getall")]
         public IHttpActionResult GetAll()
         {
-            List<PERSON> people = PersonRepository.GetAll();
+            var people = personDTORepository.GetAll();
             if (people.Count == 0)
             {
                 return NotFound();

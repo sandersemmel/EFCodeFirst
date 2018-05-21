@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebApplication1;
+using WebApplication1.Data_Transfer_Object;
 
 namespace WebApplication1.Repository
 {
     public class PersonRepository : IRepository<PERSON>
     {
         MovieContext movieContext = new MovieContext();
-        public void Add(PERSON item)
+        public bool Add(PERSON item)
         {
             throw new NotImplementedException();
         }
@@ -26,10 +27,11 @@ namespace WebApplication1.Repository
 
         public List<PERSON> GetAll()
         {
-            return movieContext.People.ToList();
+            throw new NotImplementedException();
+
         }
 
-        public void Remove(PERSON item)
+        public bool Remove(PERSON item)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,7 @@ namespace WebApplication1.Repository
     public class MovieDetailsRepository : IRepository<MovieDetails>
     {
 
-        public void Add(MovieDetails item)
+        public bool Add(MovieDetails item)
         {
             throw new NotImplementedException();
         }
@@ -66,6 +66,7 @@ namespace WebApplication1.Repository
             using (MovieContext dbContext = new MovieContext()) 
             {
                 var movies = dbContext.Movies.ToList();
+                var movieReviews = dbContext.MOVIEREVIEWs.ToList();
 
                 var movieDetails = movies.Select(a => new MovieDetails()
                 {
@@ -73,13 +74,15 @@ namespace WebApplication1.Repository
                     MovieName = a.MovieName,
                     BroughtBy = a.BroughtBy,
                     Director = a.Director,
-                    Rating = a.Rating
+                    AmountOfRatings = movieReviews.Where(c => c.MovieID == a.MovieID).Count(),
+                    RatingSum = movieReviews.Where(y=>y.MovieID==a.MovieID).Count()
+                    //Rating =  (movieReviews.Where(x => x.MovieID == a.MovieID).Sum(z=>z.MovieRating) / movieReviews.Where(c=>c.MovieID==a.MovieID).Count())
                 }).ToList();
                 return movieDetails;
             }
         }
 
-        public void Remove(MovieDetails item)
+        public bool Remove(MovieDetails item)
         {
             throw new NotImplementedException();
         }
