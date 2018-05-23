@@ -4,6 +4,7 @@ namespace EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using EF.Model;
 
 
     public partial class MovieContext : DbContext

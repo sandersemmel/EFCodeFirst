@@ -5,14 +5,14 @@ namespace WebApplication1.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication1.MovieContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EF.MovieContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(WebApplication1.MovieContext context)
+        protected override void Seed(EF.MovieContext context)
         {
             //  This method will be called after migrating to the latest version.
 

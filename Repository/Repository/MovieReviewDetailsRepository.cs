@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Mapper;
+using EF.Model;
+using EF;
 
 namespace Repository
 {
-    public class MovieReviewDetailsRepository : IRepository<MovieReviewDetails>
+    public class MOVIEREVIEWRepository : IRepository<MOVIEREVIEW>
     {
-        public bool Add(MovieReviewDetails item)
+        public bool Add(MOVIEREVIEW item)
         {
             using (MovieContext dbContext = new MovieContext())
             {
@@ -40,19 +40,19 @@ namespace Repository
             
         }
 
-        public bool Remove(MovieReviewDetails item)
+        public bool Remove(MOVIEREVIEW item)
         {
             throw new NotImplementedException();
         }
 
-        public List<MovieReviewDetails> GetAll()
+        public List<MOVIEREVIEW> GetAll()
         {
            
             using (MovieContext dbContext = new MovieContext())
             {
                 var movieReviews = dbContext.MOVIEREVIEWs.ToList();
 
-                var movieReviewDTO = movieReviews.Select(item => new MovieReviewDetails()
+                var movieReviewDTO = movieReviews.Select(item => new MOVIEREVIEW()
                 {
                     MovieReviewID = item.MovieReviewID,
                     MovieID = item.MovieID,
@@ -64,7 +64,7 @@ namespace Repository
 
             }
         }
-        public List<MovieReviewDetails> GetAllByMovieID(int movieID)
+        public List<MOVIEREVIEW> GetAllByMovieID(int movieID)
         {
 
             using (MovieContext dbContext = new MovieContext())
@@ -72,7 +72,7 @@ namespace Repository
                 var movieReviews = dbContext.MOVIEREVIEWs.Where(x => x.MovieID == movieID).ToList();
                 var person = dbContext.People.ToList(); // älä tee näin, ellei ole pakko
 
-                var movieReviewDTO = movieReviews.Select(item => new MovieReviewDetails()
+                var movieReviewDTO = movieReviews.Select(item => new MOVIEREVIEW()
                 {
                     MovieReviewID = item.MovieReviewID,
                     MovieID = item.MovieID,
@@ -86,7 +86,7 @@ namespace Repository
 
             }
         }
-        public List<MovieReviewDetails> GetAllByPersonID(int personID)
+        public List<MOVIEREVIEW> GetAllByPersonID(int personID)
         {
             using (MovieContext dbContext = new MovieContext())
             {
@@ -97,18 +97,18 @@ namespace Repository
                 }
                 else
                 {
-                    List<MovieReviewDetails> mappedList = Mapper.Mapper.MapItems(movieReviews);
+                    List<MOVIEREVIEW> mappedList = Mapper.Mapper.MapItems(movieReviews);
                     return mappedList;
                 }
             }
         }
 
-        public List<MovieReviewDetails> Find()
+        public List<MOVIEREVIEW> Find()
         {
             throw new NotImplementedException();
         }
 
-        public MovieReviewDetails FindSingle(int? id)
+        public MOVIEREVIEW FindSingle(int? id)
         {
             throw new NotImplementedException();
         }

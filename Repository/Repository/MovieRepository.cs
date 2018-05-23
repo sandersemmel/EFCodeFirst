@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using EF;
+using EF.Model;
 
-namespace Repository
+namespace Repository.Repository
 {
     public class MovieRepository : IRepository<Movie>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Repository;
+using Repository.Repository;
 using WebApplication1.Data_Transfer_Object;
 
 namespace WebApplication1.Controllers
@@ -12,13 +12,12 @@ namespace WebApplication1.Controllers
     public class MovieController : ApiController
     {
         MovieRepository MovieRepository = new MovieRepository();
-        MovieDetailsRepository movieDetailsRepository = new MovieDetailsRepository();
 
         [Route("api/movies/getall")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<MovieDetailsDTO> movieDetails = movieDetailsRepository.GetAll();
+            List<MovieDetailsDTO> movieDetails = MovieRepository.GetAll();
 
             if (movieDetails.Count == 0)
             {
