@@ -140,11 +140,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieContext.cs" />
-    <Compile Include="Movie.cs" />
     <Compile Include="Repository\MovieDetailsRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
-    <Compile Include="MOVIEREVIEW.cs" />
-    <Compile Include="PERSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MovieReviewDetailsRepository.cs" />
     <Compile Include="Repository\PersonDTORepository.cs" />
@@ -193,6 +190,12 @@
     <EmbeddedResource Include="Migrations\201805170858197_movieratingNullableType.resx">
       <DependentUpon>201805170858197_movieratingNullableType.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repo\EF.csproj">
+      <Project>{fe206c2b-f22c-4c32-8360-a2a3bc292aea}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
