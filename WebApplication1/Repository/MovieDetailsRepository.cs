@@ -81,7 +81,6 @@ namespace WebApplication1.Repository
                 return movieDetails;
             }
         }
-
         public bool Remove(MovieDetails item)
         {
             throw new NotImplementedException();
@@ -91,7 +90,7 @@ namespace WebApplication1.Repository
             using (MovieContext dbContext = new MovieContext())
             {
                 var movies = dbContext.Movies.Take(10);
-                
+                return null;
             }
         }
     }
