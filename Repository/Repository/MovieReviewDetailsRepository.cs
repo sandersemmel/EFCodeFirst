@@ -5,7 +5,7 @@ using System.Web;
 using WebApplication1.Data_Transfer_Object;
 using WebApplication1.Mapper;
 
-namespace WebApplication1.Repository
+namespace Repository
 {
     public class MovieReviewDetailsRepository : IRepository<MovieReviewDetails>
     {

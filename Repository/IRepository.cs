@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF
+namespace Repository
 {
     public interface IRepository<T>
     {
@@ -13,7 +13,6 @@ namespace EF
         List<T> GetAll();
         List<T> Find();
         T FindSingle(int? id);
-
 
     }
 }

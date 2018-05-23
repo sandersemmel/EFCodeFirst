@@ -40,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\MovieDetailsRepository.cs" />
+    <Compile Include="Repository\MovieRepository.cs" />
+    <Compile Include="Repository\MovieReviewDetailsRepository.cs" />
+    <Compile Include="Repository\PersonDTORepository.cs" />
+    <Compile Include="Repository\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repository\" />
+    <ProjectReference Include="..\Repo\EF.csproj">
+      <Project>{fe206c2b-f22c-4c32-8360-a2a3bc292aea}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

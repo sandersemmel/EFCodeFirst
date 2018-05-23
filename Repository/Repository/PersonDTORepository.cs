@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.Data_Transfer_Object;
 
-namespace WebApplication1.Repository
+
+namespace Repository
 {
     public class PersonDTORepository : IRepository<PersonDTO>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DTO
+namespace WebApplication1.Data_Transfer_Object
 {
     public class PersonDTO
     {

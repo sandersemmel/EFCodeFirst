@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.Data_Transfer_Object;
+using EF;
 
-namespace WebApplication1
+namespace Repository
 {
     public class MovieRepository : IRepository<Movie>
     {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Repository;
 using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
 {
@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<MovieDetails> movieDetails = movieDetailsRepository.GetAll();
+            List<MovieDetailsDTO> movieDetails = movieDetailsRepository.GetAll();
 
             if (movieDetails.Count == 0)
             {

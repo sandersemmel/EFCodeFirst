@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1.Data_Transfer_Object;
+using EF;
+using EF.Model;
 
-namespace WebApplication1.Repository
+namespace Repository
 {
-    public class MovieDetailsRepository : IRepository<MovieDetails>
+    public class MovieDetailsRepository : IRepository<Movie>
     {
 
-        public bool Add(MovieDetails item)
+        public bool Add(Movie item)
         {
             throw new NotImplementedException();
         }
 
-        public List<MovieDetails> Find()
+        public List<Movie> Find()
         {
             throw new NotImplementedException();
         }

@@ -47,19 +47,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201805170736490_Initial.cs" />
+    <Compile Include="Migrations\201805170736490_Initial.Designer.cs">
+      <DependentUpon>201805170736490_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170742346_Initial1.cs" />
+    <Compile Include="Migrations\201805170742346_Initial1.Designer.cs">
+      <DependentUpon>201805170742346_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170743429_Initial2.cs" />
+    <Compile Include="Migrations\201805170743429_Initial2.Designer.cs">
+      <DependentUpon>201805170743429_Initial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170745088_Initial3.cs" />
+    <Compile Include="Migrations\201805170745088_Initial3.Designer.cs">
+      <DependentUpon>201805170745088_Initial3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170747590_newrow.cs" />
+    <Compile Include="Migrations\201805170747590_newrow.Designer.cs">
+      <DependentUpon>201805170747590_newrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170858197_movieratingNullableType.cs" />
+    <Compile Include="Migrations\201805170858197_movieratingNullableType.Designer.cs">
+      <DependentUpon>201805170858197_movieratingNullableType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\MOVIEREVIEW.cs" />
     <Compile Include="Model\PERSON.cs" />
-    <Compile Include="Movie.cs" />
     <Compile Include="MovieContext.cs" />
-    <Compile Include="MOVIEREVIEW.cs" />
-    <Compile Include="PERSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805170736490_Initial.resx">
+      <DependentUpon>201805170736490_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170742346_Initial1.resx">
+      <DependentUpon>201805170742346_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170743429_Initial2.resx">
+      <DependentUpon>201805170743429_Initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170745088_Initial3.resx">
+      <DependentUpon>201805170745088_Initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170747590_newrow.resx">
+      <DependentUpon>201805170747590_newrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170858197_movieratingNullableType.resx">
+      <DependentUpon>201805170858197_movieratingNullableType.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

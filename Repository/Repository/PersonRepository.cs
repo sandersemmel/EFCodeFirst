@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EF;
+using EF.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication1;
-using WebApplication1.Data_Transfer_Object;
 
-namespace WebApplication1.Repository
+
+namespace Repository
 {
     public class PersonRepository : IRepository<PERSON>
     {
