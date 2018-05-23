@@ -22,5 +22,15 @@ namespace WebApplication1.Mapper
 
             return mappedList;
         }
+        public static List<MovieDetails> MapMovieToMovieDetails(List<Movie> movielist)
+        {
+            List<MovieDetails> movieDetails = movielist.Select(item => new MovieDetails()
+            {
+                MovieID = item.MovieID,
+                MovieName = item.MovieName,
+                BroughtBy = item.BroughtBy,
+                
+            }).ToList();
+        }
     }
 }

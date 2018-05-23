@@ -86,5 +86,13 @@ namespace WebApplication1.Repository
         {
             throw new NotImplementedException();
         }
+        public MovieDetails Take10()
+        {
+            using (MovieContext dbContext = new MovieContext())
+            {
+                var movies = dbContext.Movies.Take(10);
+                
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApplication1.Business;
 using WebApplication1.Data_Transfer_Object;
 using WebApplication1.Repository;
 
@@ -65,6 +66,14 @@ namespace WebApplication1.Controllers
             Movie newMovie = MovieRepository.FindSingle(id);
 
             return Ok(newMovie);
+        }
+        [HttpGet]
+        [Route("api/moviedetails/homepage")]
+        public IHttpActionResult GetHomePageDTO()
+        {
+            // Return person, movie and date
+            DTOMethods dTOMethods = new DTOMethods();
+            return Ok(dTOMethods.GetHomePageDTO());
         }
     }
 }

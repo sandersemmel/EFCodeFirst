@@ -14,5 +14,6 @@ namespace WebApplication1.Data_Transfer_Object
         public double? Rating { get; set; }
         public int AmountOfRatings { get; set; }
         public int RatingSum { get; set; }
+        public string BroughtByPerson { get; set; }
     }
 }
