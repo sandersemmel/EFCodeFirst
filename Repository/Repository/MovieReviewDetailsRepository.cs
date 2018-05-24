@@ -5,7 +5,7 @@ using System.Web;
 using EF.Model;
 using EF;
 
-namespace Repository
+namespace Repository.Repository
 {
     public class MOVIEREVIEWRepository : IRepository<MOVIEREVIEW>
     {
@@ -69,21 +69,7 @@ namespace Repository
 
             using (MovieContext dbContext = new MovieContext())
             {
-                var movieReviews = dbContext.MOVIEREVIEWs.Where(x => x.MovieID == movieID).ToList();
-                var person = dbContext.People.ToList(); // älä tee näin, ellei ole pakko
-
-                var movieReviewDTO = movieReviews.Select(item => new MOVIEREVIEW()
-                {
-                    MovieReviewID = item.MovieReviewID,
-                    MovieID = item.MovieID,
-                    MovieRating = item.MovieRating,
-                    MovieReviewText = item.MovieReviewText,
-                    Reviewer = item.Reviewer,
-                    ReviewerFirstName = person.Where(y=>y.PersonID == item.Reviewer).FirstOrDefault().FirstName,
-                    ReviewerLastName = person.Where(y=>y.PersonID == item.Reviewer).FirstOrDefault().LastName
-                }).ToList();
-                return movieReviewDTO;
-
+                return dbContext.MOVIEREVIEWs.Where(x => x.MovieID == movieID).ToList();
             }
         }
         public List<MOVIEREVIEW> GetAllByPersonID(int personID)
@@ -97,8 +83,8 @@ namespace Repository
                 }
                 else
                 {
-                    List<MOVIEREVIEW> mappedList = Mapper.Mapper.MapItems(movieReviews);
-                    return mappedList;
+                    var reviews = dbContext.MOVIEREVIEWs.Where(z=> z.Reviewer == personID).ToList();
+                    return reviews;
                 }
             }
         }

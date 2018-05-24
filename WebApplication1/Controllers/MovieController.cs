@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Repository.Repository;
 using WebApplication1.Data_Transfer_Object;
+using EF.Model;
 
 namespace WebApplication1.Controllers
 {
@@ -17,15 +18,16 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<MovieDetailsDTO> movieDetails = MovieRepository.GetAll();
+            var movies = MovieRepository.GetAll();
 
-            if (movieDetails.Count == 0)
+            if (movies.Count == 0)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(movieDetails);
+                // MAP Movie -> MovieDTO
+                return Ok();
             }
         }
 
@@ -43,18 +45,19 @@ namespace WebApplication1.Controllers
             }
         }
         [HttpGet]
-        [Route("api/moviedetails/{id}")]
+        [Route("api/movies/{id}")]
         public IHttpActionResult GetMovieDetails(int id)
         {
-            MovieDetails foundMovie = movieDetailsRepository.FindSingle(id);
+            var movie = MovieRepository.FindSingle(id);
 
-            if (foundMovie == null)
+            if (movie == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(foundMovie);
+                // MAP Movie -> MovieDTO
+                return Ok();
             }
         }
         [HttpGet]

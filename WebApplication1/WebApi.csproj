@@ -143,6 +143,10 @@
       <Project>{be153139-3e94-40d0-a3ed-4f7204b00a18}</Project>
       <Name>Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repo\EF.csproj">
+      <Project>{fe206c2b-f22c-4c32-8360-a2a3bc292aea}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

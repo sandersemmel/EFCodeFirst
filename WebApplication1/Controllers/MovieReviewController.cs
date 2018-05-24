@@ -5,52 +5,58 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Repository;
+using Repository.Repository;
+using EF.Model;
 
 namespace WebApplication1.Controllers
 {
     public class MovieReviewController : ApiController
     {
-        MovieReviewDetailsRepository movieReviewDetailsRepository = new MovieReviewDetailsRepository();
+
+        MOVIEREVIEWRepository MOVIEREVIEWRepository = new MOVIEREVIEWRepository();
 
         [HttpGet]
-        [Route("api/moviereviewdetails/{id}")]
+        [Route("api/moviereviews/{id}")]
         public IHttpActionResult GetAllByMovieID(int id)
         {
-            List<MovieReviewDetails> movieReviewDTO = movieReviewDetailsRepository.GetAllByMovieID(id);
+           var movies = MOVIEREVIEWRepository.GetAllByMovieID(id);
 
-            if (movieReviewDTO == null || !movieReviewDTO.Any())
+            if (movies == null || !movies.Any())
             {
                 return NotFound();
             }
             else
             {
-                return Ok(movieReviewDTO);
+                // MAP moviereview -> moviereviewDTO
+                return Ok();
             }
             
         }
 
         [HttpGet]
-        [Route("api/moviereviewdetails/person/{id}")]
+        [Route("api/moviereviews/person/{id}")]
         public IHttpActionResult GetAll(int id)
         {
-            List<MovieReviewDetails> movieReviewDTO = movieReviewDetailsRepository.GetAllByPersonID(id);
+            var movieReviews = MOVIEREVIEWRepository.GetAllByPersonID(id);
 
-            if (movieReviewDTO == null)
+            if (movieReviews == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(movieReviewDTO);
+                // MAP moviereview -> moviereviewDTO
+                return Ok();
             }
 
         }
         [HttpPost]
-        [Route("api/moviereviewdetails/add")]
-        public IHttpActionResult Add([FromBody] MovieReviewDetails movieReviewDetails)
+        [Route("api/moviereviews/add")]
+        public IHttpActionResult Add([FromBody] MovieReviewDetailsDTO movieReviewDetailsDTO)
         {
-            if (movieReviewDetailsRepository.Add(movieReviewDetails))
+            // MAP moviereviewdetailsDTO -> Moviereview
+
+            if (MOVIEREVIEWRepository.Add(null))
             {
                 return Ok();
             }

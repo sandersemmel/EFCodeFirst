@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\MovieDetailsRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="Repository\MovieReviewDetailsRepository.cs" />
     <Compile Include="Repository\PersonDTORepository.cs" />

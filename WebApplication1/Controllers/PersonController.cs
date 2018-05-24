@@ -5,25 +5,29 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Repository;
+using Repository.Repository;
+using EF.Model;
 
 namespace WebApplication1.Controllers
 {
 
     public class PersonController : ApiController
     {
-        PersonDTORepository personDTORepository = new PersonDTORepository();
         PersonRepository personRepository = new PersonRepository();
 
         [Route("api/addperson")]
         [HttpPost]
-        public IHttpActionResult Post()
+        public IHttpActionResult Post([FromBody] PERSON person)
         {
-            PERSON uusi = new PERSON();
-            uusi.FirstName = "testi";
-            uusi.LastName = "testi";
-            personRepository.Add(uusi);
-            return Ok();
+            if (personRepository.Add(person))
+            {
+                return Ok("Person was added.");
+            }
+            else
+            {
+                return BadRequest("Person was not added.");
+            }
+            
         }
         [HttpGet]
         [Route("api/person/{id}")]
@@ -44,7 +48,7 @@ namespace WebApplication1.Controllers
         [Route("api/person/getall")]
         public IHttpActionResult GetAll()
         {
-            var people = personDTORepository.GetAll();
+            var people = personRepository.GetAll();
             if (people.Count == 0)
             {
                 return NotFound();

@@ -6,14 +6,27 @@ using System.Linq;
 using System.Web;
 
 
-namespace Repository
+namespace Repository.Repository
 {
     public class PersonRepository : IRepository<PERSON>
     {
-        MovieContext movieContext = new MovieContext();
         public bool Add(PERSON item)
         {
-            throw new NotImplementedException();
+            using (MovieContext dbContext = new MovieContext())
+            {
+                try
+                {
+                    dbContext.People.Add(item);
+                    dbContext.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+
+                    return false;
+                }
+               
+            }
         }
 
         public List<PERSON> Find()
@@ -23,7 +36,20 @@ namespace Repository
 
         public PERSON FindSingle(int? id)
         {
-           return movieContext.People.Find(id);
+            using (MovieContext dbContext = new MovieContext())
+            {
+                try
+                {
+                    var person = dbContext.People.Find(id);
+                    return person;
+                }
+                catch (Exception)
+                {
+
+                    return null;
+                }
+            }
+                
         }
 
         public List<PERSON> GetAll()
