@@ -45,7 +45,6 @@ namespace Repository.Repository
                 }
                 catch (Exception)
                 {
-
                     return null;
                 }
             }
@@ -54,7 +53,27 @@ namespace Repository.Repository
 
         public List<PERSON> GetAll()
         {
-            throw new NotImplementedException();
+            using (MovieContext dbContext = new MovieContext())
+            {
+                try
+                {
+                    var people = dbContext.People.ToList();
+                    if (people == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return people;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return null;
+                }
+                
+            }
 
         }
 

@@ -7,6 +7,7 @@ using System.Web.Http;
 using WebApplication1.Data_Transfer_Object;
 using Repository.Repository;
 using EF.Model;
+using AutoMapper;
 
 namespace WebApplication1.Controllers
 {
@@ -15,7 +16,7 @@ namespace WebApplication1.Controllers
     {
         PersonRepository personRepository = new PersonRepository();
 
-        [Route("api/addperson")]
+        [Route("api/person/add")]
         [HttpPost]
         public IHttpActionResult Post([FromBody] PERSON person)
         {
@@ -35,12 +36,23 @@ namespace WebApplication1.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return BadRequest("Id can not be null.");
             }
             else
             {
                 PERSON person = personRepository.FindSingle(id);
-                return Ok(person);
+                if (person == null)
+                {
+                    return BadRequest("Person not found.");
+                }
+                else
+                {
+                    PersonDTO personDTO = new PersonDTO();
+                    AutoMapper.Mapper.Map(person,personDTO);
+                    
+                    return Ok(personDTO);
+                }
+
             }
 
         }
@@ -51,11 +63,13 @@ namespace WebApplication1.Controllers
             var people = personRepository.GetAll();
             if (people.Count == 0)
             {
-                return NotFound();
+                return BadRequest("No people found.");
             }
             else
             {
-                return Ok(people);
+                List<PersonDTO> personDTOList = new List<PersonDTO>();
+                AutoMapper.Mapper.Map(people, personDTOList);
+                return Ok(personDTOList);
             }
 
         }
