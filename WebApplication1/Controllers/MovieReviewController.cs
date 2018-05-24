@@ -14,13 +14,14 @@ namespace WebApplication1.Controllers
     {
 
         MOVIEREVIEWRepository MOVIEREVIEWRepository = new MOVIEREVIEWRepository();
+        PersonRepository personRepository = new PersonRepository();
 
         [HttpGet]
         [Route("api/moviereviews/{id}")]
         public IHttpActionResult GetAllByMovieID(int id)
         {
            var movieReviews = MOVIEREVIEWRepository.GetAllByMovieID(id);
-
+            var people = personRepository.GetAll();
             if (movieReviews == null || !movieReviews.Any())
             {
                 return NotFound();
@@ -30,6 +31,12 @@ namespace WebApplication1.Controllers
                 // MAP moviereview -> moviereviewDTO
                 List<MovieReviewsDTO> movieReviewsDTO = new List<MovieReviewsDTO>();
                 AutoMapper.Mapper.Map(movieReviews, movieReviewsDTO);
+                foreach (MovieReviewsDTO m in movieReviewsDTO)
+                {
+                    m.ReviewerFirstName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().FirstName;
+                    m.ReviewerLastName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().LastName;
+
+                }
                 return Ok(movieReviewsDTO);
             }
             
