@@ -14,8 +14,10 @@ namespace WebApplication1
         {
             CreateMap<PERSON, PersonDTO>();
             CreateMap<PersonDTO, PERSON>();
-            CreateMap<Movie, MovieDetailsDTO>();
-            CreateMap<MovieDetailsDTO, Movie>();
+            CreateMap<Movie, MovieDTO>();
+            CreateMap<MovieDTO, Movie>();
+            CreateMap<MOVIEREVIEW, MovieReviewsDTO>();
+            CreateMap<MovieReviewsDTO, MOVIEREVIEW>();
         }
 
         public static void Run()

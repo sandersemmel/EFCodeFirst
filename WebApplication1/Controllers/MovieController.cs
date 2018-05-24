@@ -14,6 +14,7 @@ namespace WebApplication1.Controllers
     {
         MovieRepository MovieRepository = new MovieRepository();
         MOVIEREVIEWRepository movieReviewRepository = new MOVIEREVIEWRepository();
+        
 
         [Route("api/movies/getall")]
         [HttpGet]
@@ -30,29 +31,32 @@ namespace WebApplication1.Controllers
             else
             {
                 // MAP Movie -> MovieDTO
-                List<MovieDetailsDTO> movieDetailsDTO = new List<MovieDetailsDTO>();
-                AutoMapper.Mapper.Map(movies, movieDetailsDTO);
+                List<MovieDTO> MovieDTO = new List<MovieDTO>();
+                AutoMapper.Mapper.Map(movies, MovieDTO);
 
                 // ADDING Rating to MovieDTO
-                foreach (MovieDetailsDTO m in movieDetailsDTO)
+                foreach (MovieDTO m in MovieDTO)
                 {
                     m.Rating = reviews.Where(z => z.MovieID == m.MovieID).Average(o => o.MovieRating);
                 }
-                return Ok(movieDetailsDTO);
+                return Ok(MovieDTO);
             }
         }
 
         [HttpPost]
         [Route("api/movies/add")]
-        public IHttpActionResult AddMovie([FromBody] Movie movie)
+        public IHttpActionResult AddMovie([FromBody] MovieDTO movieDTO)
         {
+            Movie movie = new Movie();
+            AutoMapper.Mapper.Map(movieDTO,movie);
+
             if (MovieRepository.Add(movie))
             {
-                return Ok();
+                return Ok("Movie was added.");
             }
             else
             {
-                return NotFound();
+                return BadRequest("Movie was not added!");
             }
         }
         [HttpGet]
@@ -60,7 +64,7 @@ namespace WebApplication1.Controllers
         public IHttpActionResult GetMovieDetails(int id)
         {
             var movie = MovieRepository.FindSingle(id);
-
+            var reviews = movieReviewRepository.GetAllByMovieID(id);
             if (movie == null)
             {
                 return NotFound();
@@ -68,7 +72,10 @@ namespace WebApplication1.Controllers
             else
             {
                 // MAP Movie -> MovieDTO
-                return Ok();
+                MovieDTO movieDTOReturn = new MovieDTO();
+                AutoMapper.Mapper.Map(movie, movieDTOReturn);
+                movieDTOReturn.Rating = reviews.Average(o=> o.MovieRating);
+                return Ok(movieDTOReturn);
             }
         }
         [HttpGet]

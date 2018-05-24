@@ -19,16 +19,18 @@ namespace WebApplication1.Controllers
         [Route("api/moviereviews/{id}")]
         public IHttpActionResult GetAllByMovieID(int id)
         {
-           var movies = MOVIEREVIEWRepository.GetAllByMovieID(id);
+           var movieReviews = MOVIEREVIEWRepository.GetAllByMovieID(id);
 
-            if (movies == null || !movies.Any())
+            if (movieReviews == null || !movieReviews.Any())
             {
                 return NotFound();
             }
             else
             {
                 // MAP moviereview -> moviereviewDTO
-                return Ok();
+                List<MovieReviewsDTO> movieReviewsDTO = new List<MovieReviewsDTO>();
+                AutoMapper.Mapper.Map(movieReviews, movieReviewsDTO);
+                return Ok(movieReviewsDTO);
             }
             
         }
@@ -52,9 +54,9 @@ namespace WebApplication1.Controllers
         }
         [HttpPost]
         [Route("api/moviereviews/add")]
-        public IHttpActionResult Add([FromBody] MovieReviewDetailsDTO movieReviewDetailsDTO)
+        public IHttpActionResult Add([FromBody] MovieReviewsDTO MovieReviewsDTO)
         {
-            // MAP moviereviewdetailsDTO -> Moviereview
+            // MAP MovieReviewsDTO -> Moviereview
 
             if (MOVIEREVIEWRepository.Add(null))
             {

@@ -7,9 +7,6 @@ namespace WebApplication1
 {
     public class Helpers
     {
-        //public static int CalculateRating()
-        //{
-
-        //}
+       
     }
 }

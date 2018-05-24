@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApplication1.Data_Transfer_Object
 {
-    public class MovieDetailsDTO
+    public class MovieDTO
     {
         public int MovieID { get; set; }
         public string MovieName { get; set; }

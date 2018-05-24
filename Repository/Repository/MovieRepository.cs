@@ -75,8 +75,27 @@ namespace Repository.Repository
 
         public Movie FindSingle(int? id)
         {
-            //return dbContext.Movies.Find(id);
-            return null;
+            using (MovieContext dbContext = new MovieContext())
+            {
+                try
+                {
+                    var movie = dbContext.Movies.Where(z => z.MovieID == id).FirstOrDefault();
+                    if (movie == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return movie;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return null;
+                }
+            }
+
         }
     }
 }

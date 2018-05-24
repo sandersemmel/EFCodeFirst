@@ -9,31 +9,31 @@
 
 //namespace Business.BusinessLogic
 //{
-//    public class MovieBusiness : IRepository<MovieDetailsDTO>
+//    public class MovieBusiness : IRepository<MovieDTO>
 //    {
 //        MovieRepository movieRepository = new MovieRepository();
 
-//        public bool Add(MovieDetailsDTO item)
+//        public bool Add(MovieDTO item)
 //        {
-//            Mapper.Map(MovieDetailsDTO)
+//            Mapper.Map(MovieDTO)
 //        }
 
-//        public List<MovieDetailsDTO> Find()
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public MovieDetailsDTO FindSingle(int? id)
+//        public List<MovieDTO> Find()
 //        {
 //            throw new NotImplementedException();
 //        }
 
-//        public List<MovieDetailsDTO> GetAll()
+//        public MovieDTO FindSingle(int? id)
 //        {
 //            throw new NotImplementedException();
 //        }
 
-//        public bool Remove(MovieDetailsDTO item)
+//        public List<MovieDTO> GetAll()
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public bool Remove(MovieDTO item)
 //        {
 //            throw new NotImplementedException();
 //        }
