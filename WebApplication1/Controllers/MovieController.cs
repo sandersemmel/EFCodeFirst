@@ -13,21 +13,32 @@ namespace WebApplication1.Controllers
     public class MovieController : ApiController
     {
         MovieRepository MovieRepository = new MovieRepository();
+        MOVIEREVIEWRepository movieReviewRepository = new MOVIEREVIEWRepository();
 
         [Route("api/movies/getall")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
             var movies = MovieRepository.GetAll();
+            var reviews = movieReviewRepository.GetAll(); 
 
-            if (movies.Count == 0)
+
+            if (movies.Count == 0 || movies == null)
             {
-                return NotFound();
+                return BadRequest("There are no movies or the movie list is empty.");
             }
             else
             {
                 // MAP Movie -> MovieDTO
-                return Ok();
+                List<MovieDetailsDTO> movieDetailsDTO = new List<MovieDetailsDTO>();
+                AutoMapper.Mapper.Map(movies, movieDetailsDTO);
+
+                // ADDING Rating to MovieDTO
+                foreach (MovieDetailsDTO m in movieDetailsDTO)
+                {
+                    m.Rating = reviews.Where(z => z.MovieID == m.MovieID).Average(o => o.MovieRating);
+                }
+                return Ok(movieDetailsDTO);
             }
         }
 

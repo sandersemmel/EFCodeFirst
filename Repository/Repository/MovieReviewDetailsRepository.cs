@@ -50,18 +50,23 @@ namespace Repository.Repository
            
             using (MovieContext dbContext = new MovieContext())
             {
-                var movieReviews = dbContext.MOVIEREVIEWs.ToList();
-
-                var movieReviewDTO = movieReviews.Select(item => new MOVIEREVIEW()
+                try
                 {
-                    MovieReviewID = item.MovieReviewID,
-                    MovieID = item.MovieID,
-                    MovieRating = item.MovieRating,
-                    MovieReviewText = item.MovieReviewText,
-                    Reviewer = item.Reviewer
-                }).ToList();
-                return movieReviewDTO;
-
+                    var reviews = dbContext.MOVIEREVIEWs.ToList();
+                    if (reviews.Count == 0 || reviews == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return reviews;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                
             }
         }
         public List<MOVIEREVIEW> GetAllByMovieID(int movieID)

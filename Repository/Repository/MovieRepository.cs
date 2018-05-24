@@ -9,9 +9,6 @@ namespace Repository.Repository
 {
     public class MovieRepository : IRepository<Movie>
     {
-        MovieContext dbContext = new MovieContext();
-
-
         public List<Movie> Find()
         {
             throw new NotImplementedException();
@@ -39,8 +36,8 @@ namespace Repository.Repository
         {
             try
             {
-                dbContext.Movies.Remove(item);
-                dbContext.SaveChanges();
+                //dbContext.Movies.Remove(item);
+                //dbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -52,13 +49,34 @@ namespace Repository.Repository
         }
         public List<Movie> GetAll()
         {
-               return dbContext.Movies.ToList();
+            using (MovieContext dbContext = new MovieContext())
+            {
+                try
+                {
+                    var movies = dbContext.Movies.ToList();
+                    if (movies == null || movies.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return movies;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return null;
+                }
+                
+            }
         }
 
 
         public Movie FindSingle(int? id)
         {
-            return dbContext.Movies.Find(id);
+            //return dbContext.Movies.Find(id);
+            return null;
         }
     }
 }
