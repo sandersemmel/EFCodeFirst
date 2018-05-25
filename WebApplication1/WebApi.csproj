@@ -100,6 +100,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\MovieReviewController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -147,9 +148,9 @@
       <Project>{b8cdf9af-5268-44e7-b242-aab0041be849}</Project>
       <Name>Mapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MovieReviewStats\MovieReviewStatsTest.csproj">
+    <ProjectReference Include="..\MovieReviewStats\StatisticsLibraryTest.csproj">
       <Project>{6c5d1068-fcb4-4724-93ea-20a13ceddb53}</Project>
-      <Name>MovieReviewStatsTest</Name>
+      <Name>StatisticsLibraryTest</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{be153139-3e94-40d0-a3ed-4f7204b00a18}</Project>

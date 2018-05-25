@@ -11,19 +11,17 @@ using Data_Transfer_Object;
 
 namespace StatisticsLibrary
 {
-    public class MovieReviewStats
+    public static class MovieReviewStats
     {
-        
-        MOVIEREVIEWRepository movieReviewRepository = new MOVIEREVIEWRepository();
-        List<MovieReviewDTO> MovieReviewDTO = new List<MovieReviewDTO>();
-        public MovieReviewStats()
+        public int GetAllMovieReviewsCountByPersonID(IEnumerable<MOVIEREVIEW> movieReviewEnumerable,int id)
         {
-            var movieReviews = movieReviewRepository.GetAll();
-            this.MovieReviewDTO = AutoMapper.Mapper.Map(movieReviews, MovieReviewDTO);
+            return movieReviewEnumerable.Where(o => o.Reviewer == id).Count();
+
         }
-        public int GetAllMovieReviewsCountByPersonID(int id)
+        public double? GetAverageMovieRatingByPersonID(int personID)
         {
-            return MovieReviewDTO.Where(o => o.Reviewer == id).Count();
+            var averageRating = MovieReviewDTO.Where(o => o.Reviewer == personID).Average(o => o.MovieRating);
+            return averageRating;
         }
     }
 }

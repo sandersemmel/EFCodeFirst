@@ -29,8 +29,9 @@ namespace WebApplication1
                         .SerializerSettings
                         .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
-            MovieReviewStatsTest.MovieReviewStatsTest test = new MovieReviewStatsTest.MovieReviewStatsTest();
-            test.GetAllMovieReviewsCountByPersonID();
+            StatisticsLibraryTest.StatisticsLibraryTest test = new StatisticsLibraryTest.StatisticsLibraryTest();
+            var getAllMovieReviewsCountByPersonIDResult = test.GetAllMovieReviewsCountByPersonID();
+            var GetAverageMovieRatingByPersonID = test.GetAverageMovieRatingByPersonID();
         }
     }
 }

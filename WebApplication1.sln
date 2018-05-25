@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsLibrary", "Statis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Transfer_Object", "Data_Transfer_Object\Data_Transfer_Object.csproj", "{B9C560F3-0243-4547-AE36-AF482B83701F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieReviewStatsTest", "MovieReviewStats\MovieReviewStatsTest.csproj", "{6C5D1068-FCB4-4724-93EA-20A13CEDDB53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsLibraryTest", "MovieReviewStats\StatisticsLibraryTest.csproj", "{6C5D1068-FCB4-4724-93EA-20A13CEDDB53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

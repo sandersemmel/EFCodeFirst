@@ -43,6 +43,7 @@
     <Compile Include="Data Transfer Object\MovieDetailDTO.cs" />
     <Compile Include="Data Transfer Object\MovieReviewDTO.cs" />
     <Compile Include="Data Transfer Object\PersonDTO.cs" />
+    <Compile Include="Data Transfer Object\TestDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
