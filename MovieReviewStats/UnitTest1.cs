@@ -17,10 +17,6 @@ namespace MovieReviewStatsTest
 
             int result = movieReviewStats.GetAllMovieReviewsCountByPersonID(1);
 
-            try
-            {
-
-            }
             Assert.AreEqual(count, result);
         }
     }
