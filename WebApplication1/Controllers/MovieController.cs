@@ -4,59 +4,84 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+<<<<<<< HEAD
 using WebApplication1.Business;
 using WebApplication1.Data_Transfer_Object;
 using WebApplication1.Repository;
+=======
+using Repository.Repository;
+using Data_Transfer_Object;
+using EF.Model;
+>>>>>>> dll
 
 namespace WebApplication1.Controllers
 {
     public class MovieController : ApiController
     {
         MovieRepository MovieRepository = new MovieRepository();
-        MovieDetailsRepository movieDetailsRepository = new MovieDetailsRepository();
+        MOVIEREVIEWRepository movieReviewRepository = new MOVIEREVIEWRepository();
+        
 
         [Route("api/movies/getall")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<MovieDetails> movieDetails = movieDetailsRepository.GetAll();
+            var movies = MovieRepository.GetAll();
+            var reviews = movieReviewRepository.GetAll(); 
 
-            if (movieDetails.Count == 0)
+
+            if (movies.Count == 0 || movies == null)
             {
-                return NotFound();
+                return BadRequest("There are no movies or the movie list is empty.");
             }
             else
             {
-                return Ok(movieDetails);
+                // MAP Movie -> MovieDTO
+                List<MovieDTO> MovieDTO = new List<MovieDTO>();
+                AutoMapper.Mapper.Map(movies, MovieDTO);
+
+                // ADDING Rating to MovieDTO
+                foreach (MovieDTO m in MovieDTO)
+                {
+                    m.Rating = reviews.Where(z => z.MovieID == m.MovieID).Average(o => o.MovieRating);
+                }
+                return Ok(MovieDTO);
             }
         }
 
         [HttpPost]
         [Route("api/movies/add")]
-        public IHttpActionResult AddMovie([FromBody] Movie movie)
+        public IHttpActionResult AddMovie([FromBody] MovieDTO movieDTO)
         {
+            Movie movie = new Movie();
+            AutoMapper.Mapper.Map(movieDTO,movie);
+
             if (MovieRepository.Add(movie))
             {
-                return Ok();
+                return Ok("Movie was added.");
             }
             else
             {
-                return NotFound();
+                return BadRequest("Movie was not added!");
             }
         }
         [HttpGet]
-        [Route("api/moviedetails/{id}")]
+        [Route("api/movies/{id}")]
         public IHttpActionResult GetMovieDetails(int id)
         {
-            MovieDetails foundMovie = movieDetailsRepository.FindSingle(id);
-
-            if (foundMovie == null)
+            var movie = MovieRepository.FindSingle(id);
+            var reviews = movieReviewRepository.GetAllByMovieID(id);
+            if (movie == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(foundMovie);
+                // MAP Movie -> MovieDTO
+                MovieDTO movieDTOReturn = new MovieDTO();
+                AutoMapper.Mapper.Map(movie, movieDTOReturn);
+                movieDTOReturn.Rating = reviews.Average(o=> o.MovieRating);
+                return Ok(movieDTOReturn);
             }
         }
         [HttpGet]

@@ -4,53 +4,68 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Repository;
+using Data_Transfer_Object;
+using Repository.Repository;
+using EF.Model;
 
 namespace WebApplication1.Controllers
 {
     public class MovieReviewController : ApiController
     {
-        MovieReviewDetailsRepository movieReviewDetailsRepository = new MovieReviewDetailsRepository();
+
+        MOVIEREVIEWRepository MOVIEREVIEWRepository = new MOVIEREVIEWRepository();
+        PersonRepository personRepository = new PersonRepository();
 
         [HttpGet]
-        [Route("api/moviereviewdetails/{id}")]
+        [Route("api/moviereviews/{id}")]
         public IHttpActionResult GetAllByMovieID(int id)
         {
-            List<MovieReviewDetails> movieReviewDTO = movieReviewDetailsRepository.GetAllByMovieID(id);
-
-            if (movieReviewDTO == null || !movieReviewDTO.Any())
+           var movieReviews = MOVIEREVIEWRepository.GetAllByMovieID(id);
+            var people = personRepository.GetAll();
+            if (movieReviews == null || !movieReviews.Any())
             {
                 return NotFound();
             }
             else
             {
-                return Ok(movieReviewDTO);
+                // MAP moviereview -> moviereviewDTO
+                List<MovieReviewDTO> MovieReviewDTO = new List<MovieReviewDTO>();
+                AutoMapper.Mapper.Map(movieReviews, MovieReviewDTO);
+                foreach (MovieReviewDTO m in MovieReviewDTO)
+                {
+                    m.ReviewerFirstName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().FirstName;
+                    m.ReviewerLastName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().LastName;
+
+                }
+                return Ok(MovieReviewDTO);
             }
             
         }
 
         [HttpGet]
-        [Route("api/moviereviewdetails/person/{id}")]
+        [Route("api/moviereviews/person/{id}")]
         public IHttpActionResult GetAll(int id)
         {
-            List<MovieReviewDetails> movieReviewDTO = movieReviewDetailsRepository.GetAllByPersonID(id);
+            var movieReviews = MOVIEREVIEWRepository.GetAllByPersonID(id);
 
-            if (movieReviewDTO == null)
+            if (movieReviews == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(movieReviewDTO);
+                // MAP moviereview -> moviereviewDTO
+                return Ok();
             }
 
         }
         [HttpPost]
-        [Route("api/moviereviewdetails/add")]
-        public IHttpActionResult Add([FromBody] MovieReviewDetails movieReviewDetails)
+        [Route("api/moviereviews/add")]
+        public IHttpActionResult Add([FromBody] MovieReviewDTO MovieReviewDTO)
         {
-            if (movieReviewDetailsRepository.Add(movieReviewDetails))
+            // MAP MovieReviewDTO -> Moviereview
+
+            if (MOVIEREVIEWRepository.Add(null))
             {
                 return Ok();
             }
