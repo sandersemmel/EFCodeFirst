@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication1.Data_Transfer_Object
+namespace Data_Transfer_Object
 {
-    public class MovieReviewsDTO
+    public class MovieReviewDTO
     {
         public int MovieReviewID { get; set; }
         public string MovieReviewText { get; set; }

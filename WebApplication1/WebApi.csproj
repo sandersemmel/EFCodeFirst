@@ -97,13 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="AutoMapProfile.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\MovieReviewController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Data Transfer Object\MovieDetailsDTO.cs" />
-    <Compile Include="Data Transfer Object\MovieReviewDetailsDTO.cs" />
-    <Compile Include="Data Transfer Object\PersonDTO.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -143,6 +139,18 @@
     <Folder Include="Context\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data_Transfer_Object\Data_Transfer_Object.csproj">
+      <Project>{b9c560f3-0243-4547-ae36-af482b83701f}</Project>
+      <Name>Data_Transfer_Object</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mapper\Mapper.csproj">
+      <Project>{b8cdf9af-5268-44e7-b242-aab0041be849}</Project>
+      <Name>Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieReviewStats\MovieReviewStatsTest.csproj">
+      <Project>{6c5d1068-fcb4-4724-93ea-20a13ceddb53}</Project>
+      <Name>MovieReviewStatsTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{be153139-3e94-40d0-a3ed-4f7204b00a18}</Project>
       <Name>Repository</Name>
@@ -150,6 +158,10 @@
     <ProjectReference Include="..\Repo\EF.csproj">
       <Project>{fe206c2b-f22c-4c32-8360-a2a3bc292aea}</Project>
       <Name>EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Statistics\StatisticsLibrary.csproj">
+      <Project>{0ffc9004-cb26-4213-8167-2a7b420c03f4}</Project>
+      <Name>StatisticsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApplication1.Data_Transfer_Object;
+using Data_Transfer_Object;
 using Repository.Repository;
 using EF.Model;
 
@@ -29,15 +29,15 @@ namespace WebApplication1.Controllers
             else
             {
                 // MAP moviereview -> moviereviewDTO
-                List<MovieReviewsDTO> movieReviewsDTO = new List<MovieReviewsDTO>();
-                AutoMapper.Mapper.Map(movieReviews, movieReviewsDTO);
-                foreach (MovieReviewsDTO m in movieReviewsDTO)
+                List<MovieReviewDTO> MovieReviewDTO = new List<MovieReviewDTO>();
+                AutoMapper.Mapper.Map(movieReviews, MovieReviewDTO);
+                foreach (MovieReviewDTO m in MovieReviewDTO)
                 {
                     m.ReviewerFirstName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().FirstName;
                     m.ReviewerLastName = people.Where(z => z.PersonID == m.Reviewer).FirstOrDefault().LastName;
 
                 }
-                return Ok(movieReviewsDTO);
+                return Ok(MovieReviewDTO);
             }
             
         }
@@ -61,9 +61,9 @@ namespace WebApplication1.Controllers
         }
         [HttpPost]
         [Route("api/moviereviews/add")]
-        public IHttpActionResult Add([FromBody] MovieReviewsDTO MovieReviewsDTO)
+        public IHttpActionResult Add([FromBody] MovieReviewDTO MovieReviewDTO)
         {
-            // MAP MovieReviewsDTO -> Moviereview
+            // MAP MovieReviewDTO -> Moviereview
 
             if (MOVIEREVIEWRepository.Add(null))
             {

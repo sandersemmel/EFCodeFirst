@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApplication1.Data_Transfer_Object;
+using Data_Transfer_Object;
 using Repository.Repository;
 using EF.Model;
 using AutoMapper;

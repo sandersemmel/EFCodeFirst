@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Repository.Repository;
-using WebApplication1.Data_Transfer_Object;
+using Data_Transfer_Object;
 using EF.Model;
 
 namespace WebApplication1.Controllers

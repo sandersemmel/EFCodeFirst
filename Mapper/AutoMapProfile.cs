@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using EF.Model;
-using WebApplication1.Data_Transfer_Object;
+using Data_Transfer_Object;
 
-namespace WebApplication1
+namespace Mapper.MapProfile
 {
     public class AutoMapProfile : AutoMapper.Profile
     {
@@ -16,8 +16,8 @@ namespace WebApplication1
             CreateMap<PersonDTO, PERSON>();
             CreateMap<Movie, MovieDTO>();
             CreateMap<MovieDTO, Movie>();
-            CreateMap<MOVIEREVIEW, MovieReviewsDTO>();
-            CreateMap<MovieReviewsDTO, MOVIEREVIEW>();
+            CreateMap<MOVIEREVIEW, MovieReviewDTO>();
+            CreateMap<MovieReviewDTO, MOVIEREVIEW>();
         }
 
         public static void Run()
