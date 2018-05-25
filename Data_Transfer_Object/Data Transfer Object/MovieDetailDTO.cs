@@ -12,11 +12,9 @@ namespace Data_Transfer_Object
         public int? BroughtBy { get; set; }
         public string Director { get; set; }
         public double? Rating { get; set; }
-<<<<<<< HEAD:WebApplication1/Data Transfer Object/MovieDetails.cs
+
         public int AmountOfRatings { get; set; }
         public int RatingSum { get; set; }
         public string BroughtByPerson { get; set; }
-=======
->>>>>>> dll:Data_Transfer_Object/Data Transfer Object/MovieDetailDTO.cs
     }
 }

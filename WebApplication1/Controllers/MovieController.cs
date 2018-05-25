@@ -4,15 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-<<<<<<< HEAD
-using WebApplication1.Business;
-using WebApplication1.Data_Transfer_Object;
-using WebApplication1.Repository;
-=======
 using Repository.Repository;
 using Data_Transfer_Object;
 using EF.Model;
->>>>>>> dll
 
 namespace WebApplication1.Controllers
 {
@@ -97,8 +91,7 @@ namespace WebApplication1.Controllers
         public IHttpActionResult GetHomePageDTO()
         {
             // Return person, movie and date
-            DTOMethods dTOMethods = new DTOMethods();
-            return Ok(dTOMethods.GetHomePageDTO());
+            return null;
         }
     }
 }

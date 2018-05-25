@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{B8CDF9AF-5268-44E7-B242-AAB0041BE849}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{7584D2B2-9E0F-4B71-8CFE-8C5203BB2231}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsLibrary", "Statistics\StatisticsLibrary.csproj", "{0FFC9004-CB26-4213-8167-2A7B420C03F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Transfer_Object", "Data_Transfer_Object\Data_Transfer_Object.csproj", "{B9C560F3-0243-4547-AE36-AF482B83701F}"
@@ -41,10 +39,6 @@ Global
 		{B8CDF9AF-5268-44E7-B242-AAB0041BE849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8CDF9AF-5268-44E7-B242-AAB0041BE849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8CDF9AF-5268-44E7-B242-AAB0041BE849}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7584D2B2-9E0F-4B71-8CFE-8C5203BB2231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7584D2B2-9E0F-4B71-8CFE-8C5203BB2231}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7584D2B2-9E0F-4B71-8CFE-8C5203BB2231}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7584D2B2-9E0F-4B71-8CFE-8C5203BB2231}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FFC9004-CB26-4213-8167-2A7B420C03F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FFC9004-CB26-4213-8167-2A7B420C03F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FFC9004-CB26-4213-8167-2A7B420C03F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
