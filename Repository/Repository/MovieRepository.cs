@@ -50,6 +50,27 @@ namespace Repository.Repository
                 return false;
             }
         }
+        public bool Remove(int id)
+        {
+            Movie removableMovie = new Movie();
+            removableMovie.MovieID = id;
+            try
+            {
+                using (MovieContext dbContext = new MovieContext())
+                {
+                    dbContext.Movies.Attach(removableMovie);
+                    dbContext.Movies.Remove(removableMovie);
+                    dbContext.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
         public List<Movie> GetAll()
         {
             using (MovieContext dbContext = new MovieContext())
