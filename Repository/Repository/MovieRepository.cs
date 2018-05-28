@@ -36,14 +36,17 @@ namespace Repository.Repository
         {
             try
             {
-                //dbContext.Movies.Remove(item);
-                //dbContext.SaveChanges();
-                return true;
+                using (MovieContext dbContext = new MovieContext())
+                {
+                    dbContext.Movies.Attach(item);
+                    dbContext.Movies.Remove(item);
+                    dbContext.SaveChanges();
+                }
+                    return true;
             }
             catch (Exception e)
             {
-
-                Console.WriteLine(e.Message);
+                Console.Write(e.Message);
                 return false;
             }
         }

@@ -10,20 +10,36 @@ namespace StatisticsLibraryTest
         [TestMethod]
         public void GetAllMovieReviewsCountByPersonID()
         {
-            Assert.IsTrue(true);
-            //StatisticsLibrary.MovieReviewStats movieReviewStats = new MovieReviewStats();
-    
-            //int actual = movieReviewStats.GetAllMovieReviewsCountByPersonID(personID);
+            StatisticsLibrary.MovieReviewStats movieReviewStats = new MovieReviewStats();
+            int personID = 1;
+            int result = 10;
+            int actual = movieReviewStats.GetAllMovieReviewsCountByPersonID(personID);
+            if (actual == result)
+            {
 
-            //    Assert.AreEqual(result, actual);
-            //    Tuple<int, int> resultTuple = new Tuple<int, int>(result,actual);
+            }
+            else
+            {
+                throw new Exception();
+            }
 
-            //return resultTuple;
         }
         [TestMethod]
         public void Test2()
         {
-            if (1==2)
+            string teksti = "hello";
+            string teksti2 = "hello2";
+            Assert.IsTrue(true);
+        }
+        [TestMethod]
+        public void GetAverageMovieRatingByPersonID()
+        {
+            int personID = 1;
+            int result = 0;
+            StatisticsLibrary.MovieReviewStats movieReviewStats = new MovieReviewStats();
+
+            var actual = movieReviewStats.GetAverageMovieRatingByPersonID(personID);
+            if (actual == result)
             {
 
             }
@@ -32,16 +48,10 @@ namespace StatisticsLibraryTest
                 throw new Exception();
             }
         }
-        //[TestMethod]
-        //public Tuple<double?,double?> GetAverageMovieRatingByPersonID(int personID, double? result)
+        //[ClassCleanup]
+        //public void ThrowError()
         //{
-        //    StatisticsLibrary.MovieReviewStats movieReviewStats = new MovieReviewStats();
-
-        //    double? actual = movieReviewStats.GetAverageMovieRatingByPersonID(personID);
-        //    Tuple<double?,double?> resultTuple = new Tuple<double?, double?>(result, actual);
-        //    return resultTuple;
-            
+        //    throw new Exception();
         //}
-
     }
 }

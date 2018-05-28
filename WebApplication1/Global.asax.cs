@@ -28,10 +28,6 @@ namespace WebApplication1
             config.Formatters.JsonFormatter
                         .SerializerSettings
                         .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-
-            StatisticsLibraryTest.StatisticsLibraryTest test = new StatisticsLibraryTest.StatisticsLibraryTest();
-            var getAllMovieReviewsCountByPersonIDResult = test.GetAllMovieReviewsCountByPersonID();
-            var GetAverageMovieRatingByPersonID = test.GetAverageMovieRatingByPersonID();
         }
     }
 }

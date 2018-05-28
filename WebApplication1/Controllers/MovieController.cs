@@ -14,14 +14,14 @@ namespace WebApplication1.Controllers
     {
         MovieRepository MovieRepository = new MovieRepository();
         MOVIEREVIEWRepository movieReviewRepository = new MOVIEREVIEWRepository();
-        
+
 
         [Route("api/movies/getall")]
         [HttpGet]
         public IHttpActionResult GetAll()
         {
             var movies = MovieRepository.GetAll();
-            var reviews = movieReviewRepository.GetAll(); 
+            var reviews = movieReviewRepository.GetAll();
 
 
             if (movies.Count == 0 || movies == null)
@@ -48,7 +48,7 @@ namespace WebApplication1.Controllers
         public IHttpActionResult AddMovie([FromBody] MovieDTO movieDTO)
         {
             Movie movie = new Movie();
-            AutoMapper.Mapper.Map(movieDTO,movie);
+            AutoMapper.Mapper.Map(movieDTO, movie);
 
             if (MovieRepository.Add(movie))
             {
@@ -74,7 +74,7 @@ namespace WebApplication1.Controllers
                 // MAP Movie -> MovieDTO
                 MovieDTO movieDTOReturn = new MovieDTO();
                 AutoMapper.Mapper.Map(movie, movieDTOReturn);
-                movieDTOReturn.Rating = reviews.Average(o=> o.MovieRating);
+                movieDTOReturn.Rating = reviews.Average(o => o.MovieRating);
                 return Ok(movieDTOReturn);
             }
         }
@@ -92,6 +92,19 @@ namespace WebApplication1.Controllers
         {
             // Return person, movie and date
             return null;
+        }
+        [HttpDelete]
+        [Route("api/movie/remove")]
+        public IHttpActionResult Remove([FromBody] Movie removableMovie)
+        {
+            if (MovieRepository.Remove(removableMovie))
+            {
+                return Ok("Movie was removed");
+            }
+            else
+            {
+                return BadRequest("Movie was not removed");
+            }
         }
     }
 }
