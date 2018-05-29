@@ -64,16 +64,31 @@ namespace WebApplication1.Controllers
         public IHttpActionResult Add([FromBody] MovieReviewDTO MovieReviewDTO)
         {
             // MAP MovieReviewDTO -> Moviereview
+            MOVIEREVIEW movieReview = new MOVIEREVIEW();
+            movieReview = AutoMapper.Mapper.Map(MovieReviewDTO, movieReview);
 
-            if (MOVIEREVIEWRepository.Add(null))
+            if (MOVIEREVIEWRepository.Add(movieReview))
             {
-                return Ok();
+                return Ok("new Moviereview was added");
             }
             else
             {
                 return Content(HttpStatusCode.BadRequest, "Moviereview was not added!");
             }
             
+        }
+        [HttpDelete,HttpOptions]
+        [Route("api/moviereviews/remove/{id}")]
+        public IHttpActionResult Delete([FromUri] int  id)
+        {
+            if (MOVIEREVIEWRepository.RemoveByMovieID(id))
+            {
+                return Ok("Removed moviereviews");
+            }
+            else
+            {
+                return BadRequest("Moviereviews were not removed");
+            }
         }
     }
 }

@@ -44,6 +44,29 @@ namespace Repository.Repository
         {
             throw new NotImplementedException();
         }
+        public bool RemoveByMovieID(int movieID)
+        {
+            try
+            {
+                using (MovieContext dbContext = new MovieContext())
+                {
+                    var toBeRemoved = dbContext.MOVIEREVIEWs.Where(o => o.MovieID == movieID);
+                    foreach (MOVIEREVIEW m in toBeRemoved)
+                    {
+                        dbContext.MOVIEREVIEWs.Remove(m);
+                        
+                    }
+                        dbContext.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
 
         public List<MOVIEREVIEW> GetAll()
         {

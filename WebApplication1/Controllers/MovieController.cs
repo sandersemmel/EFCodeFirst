@@ -93,13 +93,14 @@ namespace WebApplication1.Controllers
             // Return person, movie and date
             return null;
         }
-        [HttpDelete]
+        [HttpDelete,HttpOptions]
         [Route("api/movie/remove/{id}")]
         public IHttpActionResult Delete([FromUri] int id)
         {
             
             if (MovieRepository.Remove(id))
             {
+
                 return Ok("Movie was removed");
             }
             else
