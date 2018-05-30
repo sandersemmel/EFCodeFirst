@@ -12,21 +12,29 @@ namespace Repository.Repository
     {
         public bool Add(PERSON item)
         {
-            using (MovieContext dbContext = new MovieContext())
+            if (item.FirstName == "" || item.LastName == "")
             {
-                try
-                {
-                    dbContext.People.Add(item);
-                    dbContext.SaveChanges();
-                    return true;
-                }
-                catch (Exception)
-                {
-
-                    return false;
-                }
-               
+                return false;
             }
+            else
+            {
+                using (MovieContext dbContext = new MovieContext())
+                {
+                    try
+                    {
+                        dbContext.People.Add(item);
+                        dbContext.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+
+                        return false;
+                    }
+
+                }
+            }
+
         }
 
         public List<PERSON> Find()
