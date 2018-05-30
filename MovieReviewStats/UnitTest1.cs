@@ -48,6 +48,10 @@ namespace StatisticsLibraryTest
                 throw new Exception();
             }
         }
+
+
+
+
         //[ClassCleanup]
         //public void ThrowError()
         //{
